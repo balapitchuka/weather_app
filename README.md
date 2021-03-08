@@ -34,12 +34,21 @@ Make sure you are inside the "weather_app" folder on the same level where manage
 
 ##### 3. Install dependencies for the project
 ```
-> python -m pip install -r requirements.txt
+1. > python -m pip install -r requirements.txt
+
+2. Install redis  server to use as a broker for celery
 ```
 
 ##### 4. Running development django server
 ```
 > python  manage.py runserver
+```
+
+##### 5. Run celery task queue
+```
+Make sure you are inside weather_app folder in the same level as manage.py file
+
+> celery -A weather_app worker --loglevel=info
 ```
 
 ##### Notes
@@ -132,10 +141,17 @@ http://127.0.0.1:8000/api/auth/token/refresh/
 * Authentication : Required
     * Header   "Authorization" : "Bearer \<AccessToken\>"
 
+* optional query params:
+    - limit 
+    - offset
+
 ```
 Sample Request:
 
 http://127.0.0.1:8000/api/weather/
+
+http://127.0.0.1:8000/api/weather/?offset=10&&limit=5
+
 ```
 
 <hr>
