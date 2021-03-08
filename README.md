@@ -66,7 +66,7 @@ api/weather/email/
 ```
 
 
-#####API Detailing:
+##### API Detailing:
 **`api/auth/register/`**
 
 * API is used for new user registration.

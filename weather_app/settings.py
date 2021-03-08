@@ -143,8 +143,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
-EMAIL_HOST_USER = '<gmail_id_here>'
-EMAIL_HOST_PASSWORD = '<gmail_password_here>'
+EMAIL_HOST_USER = 'test.projects.user@gmail.com'
+EMAIL_HOST_PASSWORD = 'qduqenchvhqcinki'
 
 
 # CELERY 
