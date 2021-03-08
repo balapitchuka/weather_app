@@ -13,6 +13,13 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class EmailWeatherDataView(APIView):
+    """
+    View to get latest weather details as excel attachment
+    in email.
+
+    Note: weather data from third party api is refreshed
+    and stored in inmemory cache once every 30minutes
+    """
 
     permission_classes = (IsAuthenticated,)
 
@@ -47,7 +54,12 @@ class EmailWeatherDataView(APIView):
 
 
 class WeatherDataView(APIView):
+    """
+    View to get weather data in json response
 
+    Note: weather data from third party api is refreshed
+    and stored in inmemory cache once every 30minutes
+    """
     permission_classes = (IsAuthenticated,)
     
     def get(self, request):
@@ -56,7 +68,7 @@ class WeatherDataView(APIView):
         weather_data = cache.get('weather_data')
         if not weather_data:
             weather_data = fetch_weather_data()
-            cache.set('weather_data', weather_data, 60)
+            cache.set('weather_data', weather_data, 30)
         data = weather_data[offset:offset+limit]
         return Response(data=data)
         
