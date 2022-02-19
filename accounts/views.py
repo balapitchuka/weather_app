@@ -9,15 +9,16 @@ from accounts.serializers import RegisterSerializer
 class SignUpView(APIView):
     """
     Signup view for  new user registration
-    Signing up requires a phone number and name of the user as mandatory fields
 
-    Sample Payload to Send for User Registration
-        {
-            "phone_no" : "91 44444",
-            "password" : "B123@111",
-            "password2" : "B123@111",
-            "name" : "priya"
-        } 
+    Sample body to send:
+    {
+        "username" : "test_user",
+        "password" : "Avengers123@",
+        "password2" : "Avengers123@",
+        "first_name" : "Jack",
+        "last_name" : "Sparrow",
+        "email" : "testuser23@gmail.com"
+    }
     """
     def post(self, request):
         data = request.data
